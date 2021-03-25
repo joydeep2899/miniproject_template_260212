@@ -14,7 +14,10 @@ $(PROJ_NAME):
 run: $(PROJ_NAME)
 	./$(PROJ_NAME).out
 test:$(SRC) $(TEST)
-	gcc $(SRC) $(TEST) $(INC) -o $(PROJ_NAME).out	
+	gcc $(SRC) $(TEST) $(INC) -o $(PROJ_NAME).out
 	./$(PROJ_NAME).out
+analysis :
+	cppcheck .
+	valgrind valgrind --leak-check=yes ./$(PROJ_NAME).out
 clean: 
 	rm *.out
